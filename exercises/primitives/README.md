@@ -1,0 +1,1 @@
+Public record of my rust exercises and projects for learning purposes.
