@@ -6,6 +6,16 @@ fn add(a: i32, b: i32) -> i32 {
     a + b
 }
 
+fn classify_number(n: i32) -> &'static str {
+    if n > 0 {
+        "positive"
+    } else if n == 0 {
+        "zero"
+    } else {
+        "negative"
+    }
+}
+
 fn main() {
     let age: i32 = 25;
     let height: f64 = 1.75;
@@ -29,12 +39,14 @@ fn main() {
     println!("10 + 20 = {}", result);
 
     // if assignemnt to values
-    let number = 7;
+    let number = -3;
     let kind = if number % 2 == 0 {
         "even"
     } else {
         "odd"
     };
 
-    println!("Number {} is {}", number, kind);
+    println!("Number {number} is {kind}");
+
+    println!("{number} is {}", classify_number(number));
 }
