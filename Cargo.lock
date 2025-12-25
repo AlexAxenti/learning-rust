@@ -3,6 +3,10 @@
 version = 4
 
 [[package]]
+name = "collections-chapter-8"
+version = "0.1.0"
+
+[[package]]
 name = "collections-iterators"
 version = "0.1.0"
 
