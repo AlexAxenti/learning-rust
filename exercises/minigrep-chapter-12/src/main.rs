@@ -1,5 +1,6 @@
 use std::error::Error;
-use std::{fs, env, process};
+use std::time::Duration;
+use std::{fs, env, process, thread};
 use minigrep_chapter_12::{search, search_case_insensitive, search_iter};
 
 fn main() {
@@ -30,7 +31,8 @@ fn run(config: Config) -> Result<(), Box<dyn Error>> {
         println!("{line}");
     }
 
-    println!("\n\n\n\nDONE\n\n\n\n");
+    println!("\nDONE - waiting 1 second \n");
+    thread::sleep(Duration::from_secs(1));
     
     // Run with iterator adapter, printing sequentially
     let results_iter = search_iter(&config.query, &contents);
