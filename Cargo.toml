@@ -1,5 +1,4 @@
 [workspace]
-members = [
-  "exercises/*",
-]
+members = ["*"]
+exclude = ["target", ".git"]
 resolver = "2"
