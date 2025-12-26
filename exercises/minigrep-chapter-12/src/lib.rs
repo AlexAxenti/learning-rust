@@ -17,6 +17,12 @@ pub fn search_case_insensitive<'a>(
         .collect()
 }
 
+pub fn search_iter<'a>(query: &'a str, contents: &'a str) -> impl Iterator<Item = &'a str> {
+    contents
+        .lines()
+        .filter(move |line| line.contains(query))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

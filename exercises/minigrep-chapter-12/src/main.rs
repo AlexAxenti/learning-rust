@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::{fs, env, process};
-use minigrep_chapter_12::{search, search_case_insensitive};
+use minigrep_chapter_12::{search, search_case_insensitive, search_iter};
 
 fn main() {
     // let args: Vec<String> = env::args().collect();
@@ -19,6 +19,7 @@ fn main() {
 fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
 
+    // Run with consumed iterator, all at once
     let results = if config.ignore_case {
         search_case_insensitive(&config.query, &contents)
     } else {
@@ -26,6 +27,15 @@ fn run(config: Config) -> Result<(), Box<dyn Error>> {
     };
     
     for line in results {
+        println!("{line}");
+    }
+
+    println!("\n\n\n\nDONE\n\n\n\n");
+    
+    // Run with iterator adapter, printing sequentially
+    let results_iter = search_iter(&config.query, &contents);
+
+    for line in results_iter {
         println!("{line}");
     }
 
